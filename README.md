@@ -1,31 +1,19 @@
-local Tabela = {
-	PlayerPermission = {
-		["davdavdavtriste123"] = 			{Tier = 2000},
-		[""] = 			{Tier = 2000},
-		[""] = 				{Tier = 2000},
-		[""] = 			{Tier = 1},
-		[""] = 			{Tier = 1},
-		[""] = 			{Tier = 1},
-		[""] = 				{Tier = 1},
-		[""] = 			{Tier = 1},
-	},
-	
-	CharacterTier = {
-		["Enrico"] = 					{Tier = 1,Permission = {1569341667,3108673472,7648333286,1706462376,1569341667}},
-		["DIO"]	=					{Locked = {36651812,1569341667}},
-		["Madara"]	=				{Locked = {36651812,785068132,1569341667}},
-		["Koku"]	=				{Locked = {785068132,1569341667}},
-		["Yori"]	=				{Permission = {1158871659,3337736146,36651812,3108673472,1706462376,2987691941,1569341667}},
-		["Meliodas"]	=				{Permission = {629259254,629259254,785068132,3108673472,1569341667}},
-		["Goku"]	=				{Locked = {785068132,1569341667}},
-		["TOP"]	=					{Locked = {785068132,1569341667}},
-		["Giorno"] = 					{Tier = 1050,Permission = {36651812,785068132,3108673472,834610807,1569341667}},
-		["Hakaishin"] = 				{Locked = {36651812,128677359,785068132,629259254,1569341667}},
-		["Boss"] = 					{Locked = {785068132,36651812,7648333286,1569341667}},
-		["JP6"] = 					{Tier = 1,Permission = {1175114342,2908376678,1706565385,3108673472,3162059849}},
-		["Gojo"] = 					{Tier = 1,Permission = {1525050995,2963030044}}, -- perm temp
-	}
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
 
-}
+local button = script.Parent
 
-return Tabela
+local teleportFolder = workspace:WaitForChild("Teleports")
+local destino = teleportFolder:WaitForChild("1")
+
+if button and button:IsA("TextButton") then
+	button.MouseButton1Click:Connect(function()
+		if humanoidRootPart then
+			humanoidRootPart.CFrame = destino.CFrame + Vector3.new(0, 3, 0)
+		end
+	end)
+else
+	warn("kk")
+end
